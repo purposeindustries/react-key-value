@@ -1,1 +1,0 @@
-console.error("SyntaxError: /Users/tamasfodor/dev/react-key-value/example/main.js: Unexpected token (6:2) while parsing file: /Users/tamasfodor/dev/react-key-value/example/main.js");
