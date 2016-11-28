@@ -27,9 +27,12 @@ This module has the following props:
 ####rows
 
 ```jsx
-<KeyValue rows=[] />
+<KeyValue rows=[{
+  keyItem: '',
+  valueItem: ''
+  }] />
 ```
-By default `rows` is empty. `rows` have objects containing `keyItem` and `valueItem` strings.
+By default `rows` is empty. `rows` has objects containing `keyItem` and `valueItem` strings.
 
 ####onChange
 
@@ -57,7 +60,7 @@ Example:
   onChange={ (rows) => console.log(rows) }
 />
 ```
-`customAddButtonRenderer` is a function, which has the `handleAddNew` function as its first parameter. For an `onClick` function's parameter should be `handleAddNew` function.
+`customAddButtonRenderer`'s prop, `onClick` should call the `handleAddNew` function, which is the first parameter of `customAddButtonRenderer`.
 
 ###Try out the example
 
