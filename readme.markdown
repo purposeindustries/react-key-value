@@ -43,6 +43,8 @@ By default `rows` is empty. `rows` has objects containing `keyItem` and `valueIt
 
 ####customAddButtonRenderer
 
+You can create your own add button by the `createAddButtonRenderer` function. If set, it takes the `handleAddNew` function as the first parameter, which is responsible for the functionality of adding new fields in the `KeyValue` component. You should pass it to the element's `onClick` property.
+
 Example:
 
 ```jsx
@@ -60,10 +62,8 @@ Example:
   onChange={ (rows) => console.log(rows) }
 />
 ```
-`customAddButtonRenderer`'s prop, `onClick` should call the `handleAddNew` function, which is the first parameter of `customAddButtonRenderer`.
 
-###Try out the example
-
-```
-npm run start
-```
+###Development
+To develop run `npm start`.
+You can test your changes by opening `localhost:4567` in a browser.
+When you are happy with your changes you can build to dist with `npm run build`.
