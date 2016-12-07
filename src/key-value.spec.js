@@ -1,5 +1,14 @@
+import { shallow } from 'enzyme';
+import React from 'react';
+import KeyValue from './key-value';
+
 describe('ReactKeyValue', () => {
-  it('should have the proper class name');
+
+  it('should have the proper class name', () => {
+    const $ = shallow(<KeyValue />);
+    $.hasClass('key-value').should.be.true();
+  });
+
   it('should set the default props');
   it('should get the initial state from the props');
   it('should handle adding new rows');
