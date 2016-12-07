@@ -6,18 +6,9 @@ describe('ReactKeyValue', () => {
   it('should handle when a key changes');
   it('should handle when a value changes');
   it('should handle removing a row');
-  it('should render a KeyItem');
-  it('should render a ValueItem');
   it('should have a renderRows method');
-  it('should have a renderAddButton method');
-
-  describe('react-key-value-rows', () => {
-    it('should have the proper class name');
-    it('should call the renderRows method');
-  });
-
-  describe('react-key-value-add-new', () => {
-    it('should have the proper class name');
-    it('should call the renderAddButton method');
-  });
+  it('should render the correct amount of keyItems set by props.rows');
+  it('should render the correct amount of valueItems set by props.rows');
+  it('should render an "Add new" button');
+  it('should render an "Add new" button with a custom method');
 });
