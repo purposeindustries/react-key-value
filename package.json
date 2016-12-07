@@ -8,7 +8,7 @@
     "watch:example": "watchify -d -v -t babelify example/main.js -o example/bundle.js",
     "build": "mkdir -p dist && babel src -d dist",
     "test": "LOGGER_SILENT=1 mocha --compilers js:babel-register -r should -r babel-polyfill -r src/utils/setup-jsdom -R ${REPORTER-dot} 'src/*.spec.js'",
-    "test:watch": "REPORTERi=min npm run test -- -w",
+    "test:watch": "REPORTER=min npm run test -- -w",
     "prepublish": "npm run build"
   },
   "repository": {
