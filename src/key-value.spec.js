@@ -11,12 +11,13 @@ describe('ReactKeyValue', () => {
 
   it('should set the default props', () => {
     const $ = mount(<KeyValue />);
-    $.props().rows.should.be.an.Array();
+    $.props().rows.length.should.exactly(0);
     $.props().onChange.should.be.a.Function();
   });
   it('should get the initial state from the props', () => {
-    const $ = mount(<KeyValue />);
-    $.state().should.eql({ 'rows': [] });
+    const rows = [{ keyItem: 'a', valueItem: 'A' }];
+    const $ = mount(<KeyValue rows={ rows } />);
+    $.state().rows.should.eql(rows);
   });
   it('should handle adding new rows', () => {
     const $ = shallow(<KeyValue rows={ [{ keyItem: 'a', valueItem: 'A' }] }/>);
@@ -44,10 +45,6 @@ describe('ReactKeyValue', () => {
     const $ = shallow(<KeyValue rows={ [{ keyItem: 'a', valueItem: 'A' }] }/>);
     $.instance().handleRemove(0);
     $.state('rows').should.eql([]);
-  });
-  it('should have a renderRows method', () => {
-    const $ = shallow(<KeyValue />);
-    $.instance().renderRows.should.be.a.Function();
   });
   it('should render the correct amount of rows with the correct content, set by props.rows', () => {
     const $ = mount(
