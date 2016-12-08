@@ -14,14 +14,37 @@ describe('ReactKeyValue', () => {
     $.props().rows.should.be.an.Array();
     $.props().onChange.should.be.a.Function();
   });
-  it('should get the initial state from the props');
-  it('should handle adding new rows', () => {
-    const $ = shallow(<KeyValue />);
-    console.log(shallow($.instance().handleAddNew()));
+  it('should get the initial state from the props', () => {
+    const $ = mount(<KeyValue />);
+    $.state().should.eql({ 'rows': [] });
   });
-  it('should handle when a key changes');
-  it('should handle when a value changes');
-  it('should handle removing a row');
+  it('should handle adding new rows', () => {
+    const $ = shallow(<KeyValue rows={ [{ keyItem: 'a', valueItem: 'A' }] }/>);
+    $.instance().handleAddNew();
+    $.state('rows').should.eql([
+      { keyItem: 'a', valueItem: 'A' },
+      { keyItem: '', valueItem: '' }
+    ]);
+  });
+  it('should handle when a key changes', () => {
+    const $ = shallow(<KeyValue rows={ [{ keyItem: 'a', valueItem: 'A' }] }/>);
+    $.instance().handleKeyItemChange(0, 'z');
+    $.state('rows').should.eql([
+      { keyItem: 'z', valueItem: 'A' }
+    ]);
+  });
+  it('should handle when a value changes', () => {
+    const $ = shallow(<KeyValue rows={ [{ keyItem: 'a', valueItem: 'A' }] }/>);
+    $.instance().handleValueItemChange(0, 'Z');
+    $.state('rows').should.eql([
+      { keyItem: 'a', valueItem: 'Z' }
+    ]);
+  });
+  it('should handle removing a row', () => {
+    const $ = shallow(<KeyValue rows={ [{ keyItem: 'a', valueItem: 'A' }] }/>);
+    $.instance().handleRemove(0);
+    $.state('rows').should.eql([]);
+  });
   it('should have a renderRows method', () => {
     const $ = shallow(<KeyValue />);
     $.instance().renderRows.should.be.a.Function();
