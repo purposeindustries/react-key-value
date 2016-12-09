@@ -3,7 +3,6 @@ import React from 'react';
 import KeyValue from './key-value';
 
 describe('ReactKeyValue', () => {
-
   it('should have the proper class name', () => {
     const $ = shallow(<KeyValue />);
     $.hasClass('key-value').should.be.true();
@@ -30,6 +29,8 @@ describe('ReactKeyValue', () => {
       { keyItem: '', valueItem: '' }
     ]);
   });
+  it('should set the placeholder text for the key input field');
+  it('should hide the keyInputLabel');
   it('should update the state when a key changes', () => {
     const $ = shallow(
       <KeyValue
@@ -41,6 +42,8 @@ describe('ReactKeyValue', () => {
       { keyItem: 'z', valueItem: 'A' }
     ]);
   });
+  it('should set the placeholder text for the value input field');
+  it('should hide the valueInputLabel');
   it('should update the state when a value changes', () => {
     const $ = shallow(
       <KeyValue
