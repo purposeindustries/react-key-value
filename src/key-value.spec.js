@@ -27,13 +27,6 @@ describe('ReactKeyValue', () => {
       { keyItem: '', valueItem: '' }
     ]);
   });
-  it('should handle when a key changes', () => {
-    const $ = shallow(<KeyValue rows={ [{ keyItem: 'a', valueItem: 'A' }] }/>);
-    $.instance().handleKeyItemChange(0, 'z');
-    $.state('rows').should.eql([
-      { keyItem: 'z', valueItem: 'A' }
-    ]);
-  });
   it('should update the state when a key changes', () => {
     const $ = shallow(
       <KeyValue
@@ -52,13 +45,6 @@ describe('ReactKeyValue', () => {
       />
     );
     $.find('.key-value-row-value-item').at(0).find('input').simulate('change', { currentTarget: { value: 'Z' }} );
-    $.state('rows').should.eql([
-      { keyItem: 'a', valueItem: 'Z' }
-    ]);
-  });
-  it('should handle when a value changes', () => {
-    const $ = shallow(<KeyValue rows={ [{ keyItem: 'a', valueItem: 'A' }] }/>);
-    $.instance().handleValueItemChange(0, 'Z');
     $.state('rows').should.eql([
       { keyItem: 'a', valueItem: 'Z' }
     ]);
