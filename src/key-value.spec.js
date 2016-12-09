@@ -29,7 +29,17 @@ describe('ReactKeyValue', () => {
       { keyItem: '', valueItem: '' }
     ]);
   });
-  it('should set the placeholder text for the key input field');
+  it('should set the placeholder texts for the key input field', () => {
+    const keyInputPlaceholder = 'Enter the meta key\'s title';
+    const valueInputPlaceholder = 'Enter the value';
+    const $ = shallow(
+      <KeyValue
+        rows={ [{ keyItem: 'a', valueItem: 'A' }] }
+      />);
+    $.find('.key-value-add-new').find('button').simulate('click');
+    $.find('.key-value-row-key-item').find('input').at(0).props().placeholder.should.eql(keyInputPlaceholder);
+    $.find('.key-value-row-value-item').find('input').at(0).props().placeholder.should.eql(valueInputPlaceholder);
+  });
   it('should hide the keyInputLabel');
   it('should update the state when a key changes', () => {
     const $ = shallow(

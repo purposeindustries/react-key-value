@@ -10,19 +10,29 @@ export default React.createClass({
       valueItem: PropTypes.string
     })),
     onChange: PropTypes.func,
-    customAddButtonRenderer: PropTypes.func
+    customAddButtonRenderer: PropTypes.func,
+    keyInputPlaceholder: PropTypes.string,
+    valueInputPlaceholder: PropTypes.string,
+    hideKeyInputLabel: PropTypes.bool,
+    hideValueInputLabel: PropTypes.bool
   },
   getDefaultProps() {
     return {
       rows: [],
-      onChange: () => {}
+      onChange: () => {},
+      keyInputPlaceholder: 'Enter the meta key\'s title',
+      valueInputPlaceholder: 'Enter the value',
+      hideKeyInputLabel: false,
+      hideValueInputLabel: false
     };
   },
   getInitialState() {
     return {
       rows: [
         ...this.props.rows
-      ]
+      ],
+      hideKeyInputLabel: this.props.hideLabels,
+      hideValueInputLabel: this.props.hideLabels
     }
   },
   handleAddNew() {
@@ -82,6 +92,7 @@ export default React.createClass({
         <input
           type="text"
           value={ value }
+          placeholder={ this.props.keyInputPlaceholder }
           onChange={ (e) => this.handleKeyItemChange(index, e.currentTarget.value) }
         />
       </label>
@@ -94,6 +105,7 @@ export default React.createClass({
         <input
           type="text"
           value={ value }
+          placeholder={ this.props.valueInputPlaceholder }
           onChange={ (e) => this.handleValueItemChange(index, e.currentTarget.value) }
         />
       </label>
