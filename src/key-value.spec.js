@@ -30,17 +30,22 @@ describe('ReactKeyValue', () => {
     ]);
   });
   it('should set the placeholder texts for the key input field', () => {
-    const keyInputPlaceholder = 'Enter the meta key\'s title';
-    const valueInputPlaceholder = 'Enter the value';
+    const keyInputPlaceholder = 'Key name';
+    const valueInputPlaceholder = 'and its value';
     const $ = shallow(
       <KeyValue
         rows={ [{ keyItem: 'a', valueItem: 'A' }] }
+        keyInputPlaceholder={ keyInputPlaceholder }
+        valueInputPlaceholder={ valueInputPlaceholder }
       />);
     $.find('.key-value-add-new').find('button').simulate('click');
     $.find('.key-value-row-key-item').find('input').at(0).props().placeholder.should.eql(keyInputPlaceholder);
     $.find('.key-value-row-value-item').find('input').at(0).props().placeholder.should.eql(valueInputPlaceholder);
   });
-  it('should hide the keyInputLabel');
+  it('should hide the valueInputLabel and the keyInputLabel', () => {
+    const $ = shallow(<KeyValue hideLabels={ true } />);
+    $.find('.key-value-add-new').find('button').simulate('click');
+  });
   it('should update the state when a key changes', () => {
     const $ = shallow(
       <KeyValue
@@ -52,8 +57,6 @@ describe('ReactKeyValue', () => {
       { keyItem: 'z', valueItem: 'A' }
     ]);
   });
-  it('should set the placeholder text for the value input field');
-  it('should hide the valueInputLabel');
   it('should update the state when a value changes', () => {
     const $ = shallow(
       <KeyValue
