@@ -45,6 +45,14 @@ describe('ReactKeyValue', () => {
   it('should hide the valueInputLabel and the keyInputLabel', () => {
     const $ = shallow(<KeyValue hideLabels={ true } />);
     $.find('.key-value-add-new').find('button').simulate('click');
+    $.find('.key-value-row-key-item').find('span').length.should.exactly(0);
+    $.find('.key-value-row-value-item').find('span').length.should.exactly(0);
+  });
+  it('should show the valueInputLabel and the keyInputLabel by default', () => {
+    const $ = shallow(<KeyValue />);
+    $.find('.key-value-add-new').find('button').simulate('click');
+    $.find('.key-value-row-key-item').find('span').length.should.exactly(1);
+    $.find('.key-value-row-value-item').find('span').length.should.exactly(1);
   });
   it('should update the state when a key changes', () => {
     const $ = shallow(
