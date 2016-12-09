@@ -19,9 +19,12 @@ describe('ReactKeyValue', () => {
     const $ = mount(<KeyValue rows={ rows } />);
     $.state().rows.should.eql(rows);
   });
-  it('should handle adding new rows', () => {
-    const $ = shallow(<KeyValue rows={ [{ keyItem: 'a', valueItem: 'A' }] }/>);
-    $.instance().handleAddNew();
+  it('should update the state when adding new rows', () => {
+    const $ = shallow(
+      <KeyValue
+        rows={ [{ keyItem: 'a', valueItem: 'A' }] }
+      />);
+    $.find('.key-value-add-new').find('button').simulate('click');
     $.state('rows').should.eql([
       { keyItem: 'a', valueItem: 'A' },
       { keyItem: '', valueItem: '' }
@@ -50,8 +53,12 @@ describe('ReactKeyValue', () => {
     ]);
   });
   it('should handle removing a row', () => {
-    const $ = shallow(<KeyValue rows={ [{ keyItem: 'a', valueItem: 'A' }] }/>);
-    $.instance().handleRemove(0);
+    const $ = shallow(
+      <KeyValue
+        rows={ [{ keyItem: 'a', valueItem: 'A' }] }
+      />
+    );
+    $.find('.key-value-row-remove').find('button').simulate('click');
     $.state('rows').should.eql([]);
   });
   it('should render the correct amount of rows with the correct content, set by props.rows', () => {
