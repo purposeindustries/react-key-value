@@ -20,8 +20,8 @@ export default React.createClass({
     return {
       rows: [],
       onChange: () => {},
-      keyInputPlaceholder: 'Enter the meta key\'s title',
-      valueInputPlaceholder: 'Enter the value',
+      keyInputPlaceholder: '',
+      valueInputPlaceholder: '',
       hideKeyInputLabel: false,
       hideValueInputLabel: false
     };
