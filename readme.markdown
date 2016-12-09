@@ -34,6 +34,27 @@ This module has the following props:
 ```
 By default `rows` is empty. `rows` has objects containing `keyItem` and `valueItem` strings.
 
+####hideLabels
+
+```jsx
+<KeyValue hideLabels={ true } />
+```
+It can be used for hiding the labels' texts (e.g. "Keys:" and "Values:"). Set to `false` by default.
+
+####keyInputPlaceholder
+
+```jsx
+<KeyValue keyInputPlaceholder={ 'Key name' } />
+```
+You can set a placeholder text for the key input field.
+
+####valueInputPlaceholder
+
+```jsx
+<KeyValue valueInputPlaceholder={ 'Key name' } />
+```
+You can set a placeholder text for the value input field.
+
 ####onChange
 
 ```jsx
