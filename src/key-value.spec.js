@@ -55,11 +55,22 @@ describe('ReactKeyValue', () => {
   it('should handle removing a row', () => {
     const $ = shallow(
       <KeyValue
-        rows={ [{ keyItem: 'a', valueItem: 'A' }] }
+        rows={
+          [
+            { keyItem: 'a', valueItem: 'A' },
+            { keyItem: 'b', valueItem: 'B' },
+            { keyItem: 'c', valueItem: 'C' }
+          ]
+        }
       />
     );
-    $.find('.key-value-row-remove').find('button').simulate('click');
-    $.state('rows').should.eql([]);
+    $.find('.key-value-row-remove').at(1).find('button').simulate('click');
+    $.state('rows').should.eql(
+      [
+        { keyItem: 'a', valueItem: 'A' },
+        { keyItem: 'c', valueItem: 'C' }
+      ]
+    );
   });
   it('should render the correct amount of rows with the correct content, set by props.rows', () => {
     const $ = mount(
