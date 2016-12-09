@@ -13,8 +13,7 @@ export default React.createClass({
     customAddButtonRenderer: PropTypes.func,
     keyInputPlaceholder: PropTypes.string,
     valueInputPlaceholder: PropTypes.string,
-    hideKeyInputLabel: PropTypes.bool,
-    hideValueInputLabel: PropTypes.bool
+    hideLabels: PropTypes.bool
   },
   getDefaultProps() {
     return {
@@ -22,15 +21,14 @@ export default React.createClass({
       onChange: () => {},
       keyInputPlaceholder: '',
       valueInputPlaceholder: '',
-      hideKeyInputLabel: false,
-      hideValueInputLabel: false
+      hideLabels: false
     };
   },
   getInitialState() {
     return {
       rows: [
         ...this.props.rows
-      ],
+      ]
     }
   },
   handleAddNew() {
@@ -84,7 +82,7 @@ export default React.createClass({
     });
   },
   renderLabelText(text) {
-    if (this.props.hideLabels) {
+    if (this.props.hideLabels === true) {
       return null;
     }
     return(
