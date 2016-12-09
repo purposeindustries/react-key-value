@@ -1,14 +1,6 @@
 describe('ReactKeyValue', () => {
-  it('should have the proper class name');
-  it('should set the default props');
-  it('should get the initial state from the props');
-  it('should handle adding new rows');
-  it('should handle when a key changes');
-  it('should handle when a value changes');
-  it('should handle removing a row');
-  it('should have a renderRows method');
-  it('should render the correct amount of keyItems set by props.rows');
-  it('should render the correct amount of valueItems set by props.rows');
-  it('should render an "Add new" button');
-  it('should render an "Add new" button with a custom method');
+  it('should set the placeholder text for the key input field');
+  it('should hide the keyInputLabel');
+  it('should set the placeholder text for the value input field');
+  it('should hide the valueInputLabel');
 });
