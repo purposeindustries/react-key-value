@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const c = 'key-value'
+const c = 'key-value';
 
 export default React.createClass({
   displayName: 'KeyValue',
@@ -29,7 +29,7 @@ export default React.createClass({
       rows: [
         ...this.props.rows
       ]
-    }
+    };
   },
   handleAddNew() {
     this.setState({
@@ -41,7 +41,7 @@ export default React.createClass({
         }
       ]
     }, () => {
-      this.props.onChange([ ...this.state.rows ]);
+      this.props.onChange([...this.state.rows]);
     });
   },
   handleKeyItemChange(index, value) {
@@ -56,7 +56,7 @@ export default React.createClass({
         };
       })
     }, () => {
-      this.props.onChange([ ...this.state.rows ]);
+      this.props.onChange([...this.state.rows]);
     });
   },
   handleValueItemChange(index, value) {
@@ -71,14 +71,14 @@ export default React.createClass({
         };
       })
     }, () => {
-      this.props.onChange([ ...this.state.rows ]);
+      this.props.onChange([...this.state.rows]);
     });
   },
   handleRemove(index) {
     this.setState({
       rows: this.state.rows.filter((row, i) => i !== index)
     }, () => {
-      this.props.onChange([ ...this.state.rows ])
+      this.props.onChange([...this.state.rows]);
     });
   },
   renderLabelText(text) {
