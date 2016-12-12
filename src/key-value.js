@@ -81,11 +81,11 @@ export default React.createClass({
       this.props.onChange([...this.state.rows]);
     });
   },
-  renderLabelText(text) {
+  renderLabelText(text) {
     if (this.props.hideLabels === true) {
       return null;
     }
-    return(
+    return (
       <span>
         { text }
       </span>
@@ -94,7 +94,7 @@ export default React.createClass({
   renderKeyItem(index, value) {
     return (
       <label>
-        { this.renderLabelText('Key:') }
+        { this.renderLabelText('Key:') }
         <input
           type="text"
           value={ value }
@@ -107,7 +107,7 @@ export default React.createClass({
   renderValueItem(index, value) {
     return (
       <label>
-        { this.renderLabelText('Value:') }
+        { this.renderLabelText('Value:') }
         <input
           type="text"
           value={ value }
