@@ -7,7 +7,7 @@
     "start": "PORT=4567 http-server example & npm run watch:example & wait",
     "watch:example": "watchify -d -v -t babelify example/main.js -o example/bundle.js",
     "build": "mkdir -p dist && babel src -d dist",
-    "test": "LOGGER_SILENT=1 mocha --compilers js:babel-register -r should -r src/utils/setup-jsdom -R ${REPORTER-dot} 'src/*.spec.js'",
+    "test": "npm run js:lint && LOGGER_SILENT=1 mocha --compilers js:babel-register -r should -r src/utils/setup-jsdom -R ${REPORTER-dot} 'src/*.spec.js'",
     "test:watch": "REPORTER=min npm run test -- -w",
     "js:lint": "eslint -f ${ESLINT_FORMAT-stylish} src",
     "js:lint:watch": "esw src -w",
