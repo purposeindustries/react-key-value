@@ -37,7 +37,7 @@ describe('ReactKeyValue', () => {
         rows={ [{ keyItem: 'a', valueItem: 'A' }] }
       />
     );
-    $.find('.key-value-row-key-item').at(0).find('input').simulate('change', { currentTarget: { value: 'z' }} );
+    $.find('.key-value-row-key-item').at(0).find('input').simulate('change', { currentTarget: { value: 'z' }});
     $.state('rows').should.eql([
       { keyItem: 'z', valueItem: 'A' }
     ]);
@@ -50,7 +50,7 @@ describe('ReactKeyValue', () => {
         rows={ [{ keyItem: 'a', valueItem: 'A' }] }
       />
     );
-    $.find('.key-value-row-value-item').at(0).find('input').simulate('change', { currentTarget: { value: 'Z' }} );
+    $.find('.key-value-row-value-item').at(0).find('input').simulate('change', { currentTarget: { value: 'Z' }});
     $.state('rows').should.eql([
       { keyItem: 'a', valueItem: 'Z' }
     ]);
@@ -58,13 +58,11 @@ describe('ReactKeyValue', () => {
   it('should handle removing a row', () => {
     const $ = shallow(
       <KeyValue
-        rows={
-          [
-            { keyItem: 'a', valueItem: 'A' },
-            { keyItem: 'b', valueItem: 'B' },
-            { keyItem: 'c', valueItem: 'C' }
-          ]
-        }
+        rows={ [
+          { keyItem: 'a', valueItem: 'A' },
+          { keyItem: 'b', valueItem: 'B' },
+          { keyItem: 'c', valueItem: 'C' }
+        ] }
       />
     );
     $.find('.key-value-row-remove').at(1).find('button').simulate('click');
@@ -78,10 +76,10 @@ describe('ReactKeyValue', () => {
   it('should render the correct amount of rows with the correct content, set by props.rows', () => {
     const $ = mount(
       <KeyValue
-        rows={[
+        rows={ [
           { keyItem: 'a', valueItem: 'A' },
           { keyItem: 'b', valueItem: 'B' }
-        ]}
+        ] }
       />
     );
     $.props().rows.length.should.exactly(2);
@@ -96,12 +94,13 @@ describe('ReactKeyValue', () => {
     shallow($.instance().renderAddButton()).find('button').text().should.eql('Add new');
   });
   it('should render an "Add new" button with a custom method', () => {
+    // eslint-disable-next-line react/display-name
     const renderCustomAddButton = () => {
-      return(
+      return (
         <div className="custom-add-button">
           Clicking on this item is pointless!
         </div>
-      )
+      );
     };
     const $ = shallow(<KeyValue customAddButtonRenderer={ renderCustomAddButton } />);
     shallow($.instance().renderAddButton()).is('div').should.be.true();
