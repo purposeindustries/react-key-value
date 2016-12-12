@@ -10,12 +10,18 @@ export default React.createClass({
       valueItem: PropTypes.string
     })),
     onChange: PropTypes.func,
-    customAddButtonRenderer: PropTypes.func
+    customAddButtonRenderer: PropTypes.func,
+    keyInputPlaceholder: PropTypes.string,
+    valueInputPlaceholder: PropTypes.string,
+    hideLabels: PropTypes.bool
   },
   getDefaultProps() {
     return {
       rows: [],
-      onChange: () => {}
+      onChange: () => {},
+      keyInputPlaceholder: '',
+      valueInputPlaceholder: '',
+      hideLabels: false
     };
   },
   getInitialState() {
@@ -75,13 +81,24 @@ export default React.createClass({
       this.props.onChange([ ...this.state.rows ])
     });
   },
+  renderLabelText(text) {
+    if (this.props.hideLabels === true) {
+      return null;
+    }
+    return(
+      <span>
+        { text }
+      </span>
+    );
+  },
   renderKeyItem(index, value) {
     return (
       <label>
-        Key:
+        { this.renderLabelText('Key:') }
         <input
           type="text"
           value={ value }
+          placeholder={ this.props.keyInputPlaceholder }
           onChange={ (e) => this.handleKeyItemChange(index, e.currentTarget.value) }
         />
       </label>
@@ -90,10 +107,11 @@ export default React.createClass({
   renderValueItem(index, value) {
     return (
       <label>
-        Value:
+        { this.renderLabelText('Value:') }
         <input
           type="text"
           value={ value }
+          placeholder={ this.props.valueInputPlaceholder }
           onChange={ (e) => this.handleValueItemChange(index, e.currentTarget.value) }
         />
       </label>
