@@ -8,7 +8,7 @@
     "watch:example": "watchify -d -v -t babelify example/main.js -o example/bundle.js",
     "build": "mkdir -p dist && babel src -d dist",
     "test": "npm run js:lint && LOGGER_SILENT=1 npm run testrunner",
-    "test:watch": "npm run js:lint:watch & REPORTER=min npm run testrunner -- -w & wait",
+    "test:watch": "REPORTER=min npm run testrunner -- -w & wait",
     "testrunner": "mocha --compilers js:babel-register -r should -r src/utils/setup-jsdom -R ${REPORTER-dot} 'src/*.spec.js'",
     "js:lint": "eslint -f ${ESLINT_FORMAT-stylish} src",
     "js:lint:watch": "esw src -w",
