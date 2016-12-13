@@ -2,3 +2,5 @@ node_modules
 dist
 bundle.js
 *.log
+coverage
+.nyc_output
