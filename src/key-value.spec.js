@@ -57,23 +57,31 @@ describe('ReactKeyValue', () => {
   it('should update the state when a key changes', () => {
     const $ = shallow(
       <KeyValue
-        rows={ [{ keyItem: 'a', valueItem: 'A' }] }
+        rows={ [
+          { keyItem: 'a', valueItem: 'A' },
+          { keyItem: 'b', valueItem: 'B' }
+        ] }
       />
     );
-    $.find('.key-value-row-key-item').at(0).find('input').simulate('change', { currentTarget: { value: 'z' }});
+    $.find('.key-value-row-key-item').at(1).find('input').simulate('change', { currentTarget: { value: 'z' }});
     $.state('rows').should.eql([
-      { keyItem: 'z', valueItem: 'A' }
+      { keyItem: 'a', valueItem: 'A' },
+      { keyItem: 'z', valueItem: 'B' }
     ]);
   });
   it('should update the state when a value changes', () => {
     const $ = shallow(
       <KeyValue
-        rows={ [{ keyItem: 'a', valueItem: 'A' }] }
+        rows={ [
+          { keyItem: 'a', valueItem: 'A' },
+          { keyItem: 'b', valueItem: 'B' }
+        ] }
       />
     );
     $.find('.key-value-row-value-item').at(0).find('input').simulate('change', { currentTarget: { value: 'Z' }});
     $.state('rows').should.eql([
-      { keyItem: 'a', valueItem: 'Z' }
+      { keyItem: 'a', valueItem: 'Z' },
+      { keyItem: 'b', valueItem: 'B' }
     ]);
   });
   it('should handle removing a row', () => {

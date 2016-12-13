@@ -8,9 +8,10 @@
     "watch:example": "watchify -d -v -t babelify example/main.js -o example/bundle.js",
     "build": "mkdir -p dist && babel src -d dist",
     "coverage": "cat ./coverage/lcov.info | coveralls",
-    "test": "npm run js:lint && npm run test:coverage && LOGGER_SILENT=1 mocha --compilers js:babel-register -r should -r src/utils/setup-jsdom -R ${REPORTER-dot} 'src/*.spec.js'",
-    "test:watch": "REPORTER=min npm run test -- -w",
-    "test:coverage": "NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --compilers js:babel-register -r should -r src/utils/setup-jsdom 'src/*.spec.js'",
+    "test": "npm run js:lint && LOGGER_SILENT=1 npm run testrunner",
+    "test:coverage": "NODE_ENV=test nyc --reporter=lcov --reporter=text testrunner",
+    "test:watch": "REPORTER=min npm run testrunner -- -w & wait",
+    "testrunner": "mocha --compilers js:babel-register -r should -r src/utils/setup-jsdom -R ${REPORTER-dot} 'src/*.spec.js'",
     "js:lint": "eslint -f ${ESLINT_FORMAT-stylish} src",
     "js:lint:watch": "esw src -w",
     "prepublish": "npm run build"
