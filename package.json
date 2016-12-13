@@ -9,7 +9,7 @@
     "build": "mkdir -p dist && babel src -d dist",
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -- -r should 'src/*.spec.js'",
     "coverage": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
-    "test": "npm run js:lint && LOGGER_SILENT=1 mocha --compilers js:babel-register -r should -r src/utils/setup-jsdom -R ${REPORTER-dot} 'src/*.spec.js'",
+    "test": "npm run js:lint && npm run test:coverage && LOGGER_SILENT=1 mocha --compilers js:babel-register -r should -r src/utils/setup-jsdom -R ${REPORTER-dot} 'src/*.spec.js'",
     "test:watch": "REPORTER=min npm run test -- -w",
     "test:coverage": "NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --compilers js:babel-register -r should -r src/utils/setup-jsdom 'src/*.spec.js'",
     "js:lint": "eslint -f ${ESLINT_FORMAT-stylish} src",
