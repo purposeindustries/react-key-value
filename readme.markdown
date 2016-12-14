@@ -93,5 +93,5 @@ When you are happy with your changes you can build to dist with `npm run build`.
 
 
 ## License
-See [LICENSE](LICENSE).
+[MIT](LICENSE) &copy; Purpose Industries
 
