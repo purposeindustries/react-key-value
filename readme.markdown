@@ -90,3 +90,7 @@ Example:
 To develop run `npm start`.
 You can test your changes by opening `localhost:4567` in a browser.
 When you are happy with your changes you can build to dist with `npm run build`.
+
+## License
+See [LICENSE](LICENSE).
+
