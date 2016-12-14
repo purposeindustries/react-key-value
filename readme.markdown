@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/purposeindustries/react-key-value.svg?style=svg)](https://circleci.com/gh/purposeindustries/react-key-value)
 
+[![Coverage Status](https://coveralls.io/repos/github/purposeindustries/react-key-value/badge.svg?branch=master)](https://coveralls.io/github/purposeindustries/react-key-value?branch=chore/master)
+
 React key value is a key value visualiser/editor written in React
 
 ###Install
