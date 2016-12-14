@@ -1,6 +1,6 @@
 {
   "name": "react-key-value",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Key value visualizer/editor written in React",
   "main": "dist/index.js",
   "scripts": {
