@@ -135,4 +135,21 @@ describe('ReactKeyValue', () => {
     shallow($.instance().renderAddButton()).is('div').should.be.true();
     shallow($.instance().renderAddButton()).find('div').text().should.eql('Clicking on this item is pointless!');
   });
+  it('should return a json representation of rows', () => {
+    const rows = [
+      {
+        keyItem: 'foo',
+        valueItem: 'bar'
+      },
+      {
+        keyItem: 'lorem',
+        valueItem: 'ipsum'
+      }
+    ];
+    const $ = shallow(<KeyValue rows={ rows } />);
+    $.instance().toJSON().should.eql({
+      foo: 'bar',
+      lorem: 'ipsum'
+    });
+  });
 });
