@@ -81,6 +81,13 @@ export default React.createClass({
       this.props.onChange([...this.state.rows]);
     });
   },
+  toJSON() {
+    const { rows = [] } = this.state;
+    return rows.reduce((acc, row) => {
+      acc[row.keyItem] = row.valueItem;
+      return acc;
+    }, {});
+  },
   renderLabelText(text) {
     if (this.props.hideLabels === true) {
       return null;
