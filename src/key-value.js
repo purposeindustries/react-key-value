@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 
 const c = 'key-value';
 
-export default React.createClass({
-  displayName: 'KeyValue',
-  propTypes: {
+export default class KeyValue extends React.Component {
+  static displayName = 'KeyValue'
+
+  static propTypes = {
     rows: PropTypes.arrayOf(PropTypes.shape({
       keyItem: PropTypes.string,
       valueItem: PropTypes.string
@@ -15,24 +16,26 @@ export default React.createClass({
     keyInputPlaceholder: PropTypes.string,
     valueInputPlaceholder: PropTypes.string,
     hideLabels: PropTypes.bool
-  },
-  getDefaultProps() {
-    return {
-      rows: [],
-      onChange: () => {},
-      keyInputPlaceholder: '',
-      valueInputPlaceholder: '',
-      hideLabels: false
-    };
-  },
-  getInitialState() {
-    return {
+  }
+
+  static defaultProps = {
+    rows: [],
+    onChange: () => {},
+    keyInputPlaceholder: '',
+    valueInputPlaceholder: '',
+    hideLabels: false
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
       rows: [
         ...this.props.rows
       ]
     };
-  },
-  handleAddNew() {
+  }
+
+  handleAddNew = () => {
     this.setState({
       rows: [
         ...this.state.rows,
@@ -44,7 +47,8 @@ export default React.createClass({
     }, () => {
       this.props.onChange([...this.state.rows]);
     });
-  },
+  }
+
   handleKeyItemChange(index, value) {
     this.setState({
       rows: this.state.rows.map((row, i) => {
@@ -59,7 +63,8 @@ export default React.createClass({
     }, () => {
       this.props.onChange([...this.state.rows]);
     });
-  },
+  }
+
   handleValueItemChange(index, value) {
     this.setState({
       rows: this.state.rows.map((row, i) => {
@@ -74,21 +79,24 @@ export default React.createClass({
     }, () => {
       this.props.onChange([...this.state.rows]);
     });
-  },
+  }
+
   handleRemove(index) {
     this.setState({
       rows: this.state.rows.filter((row, i) => i !== index)
     }, () => {
       this.props.onChange([...this.state.rows]);
     });
-  },
+  }
+
   toJSON() {
     const { rows = [] } = this.state;
     return rows.reduce((acc, row) => {
       acc[row.keyItem] = row.valueItem;
       return acc;
     }, {});
-  },
+  }
+
   renderLabelText(text) {
     if (this.props.hideLabels === true) {
       return null;
@@ -98,7 +106,8 @@ export default React.createClass({
         { text }
       </span>
     );
-  },
+  }
+
   renderKeyItem(index, value) {
     return (
       <label>
@@ -111,7 +120,8 @@ export default React.createClass({
         />
       </label>
     );
-  },
+  }
+
   renderValueItem(index, value) {
     return (
       <label>
@@ -124,7 +134,8 @@ export default React.createClass({
         />
       </label>
     );
-  },
+  }
+
   renderRows() {
     return this.state.rows.map((row, i) => (
       <div
@@ -146,7 +157,8 @@ export default React.createClass({
         </div>
       </div>
     ));
-  },
+  }
+
   renderAddButton() {
     if (typeof this.props.customAddButtonRenderer === 'function') {
       return this.props.customAddButtonRenderer(this.handleAddNew);
@@ -158,7 +170,8 @@ export default React.createClass({
         Add new
       </button>
     );
-  },
+  }
+
   render() {
     return (
       <div className={ c }>
@@ -171,4 +184,4 @@ export default React.createClass({
       </div>
     );
   }
-});
+}
